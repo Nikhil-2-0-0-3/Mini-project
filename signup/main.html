@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width,
+      initial-scale=1.0"/>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+        <div class="logo">LoCaLjOli</div>
+        <div class="buttons">
+            <button id="login-button">Login</button>
+            <button id="register-button">Register</button>
+        </div>
+    </div>
+    
+    <div class="container">
+      <h1 class="form-title">Registration</h1>
+      <form action="" id="register">
+        <div class="main-user-info">
+          <div class="user-input-box">
+            <label for="fullName">Full Name</label>
+            <input type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="Enter Full Name"/>
+          </div>
+          <div class="user-input-box">
+            <label for="username">Username</label>
+            <input type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter Username"/>
+          </div>
+          <div class="user-input-box">
+            <label for="email">Email</label>
+            <input type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter Email"/>
+          </div>
+          <div class="user-input-box">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    placeholder="Enter Phone Number"/>
+          </div>
+          <div class="user-input-box">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">female</option>
+                <option value="Dont want to disclose">Dont want to disclose</option>
+
+            </select>
+        </div>
+        <div class="user-input-box">
+            <label for="dob">DOB</label>
+            <input type="date"
+                    id="dob"
+                    name="dob"/>
+          </div>
+        <div class="user-input-box">
+            <label for="Job-category">Job category</label>
+            <input type="text"
+                    id="Job-category"
+                    name="Job-category"
+                    placeholder="Enter Job category"/>
+          </div>
+          <div class="user-input-box">
+            <label for="experience">Experience</label>
+            <input type="text"
+                    id="experience"
+                    name="experience"
+                    placeholder="Enter years experience"/>
+          </div>
+          <div class="user-input-box">
+            <label for="password">Password</label>
+            <input type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter Password"/>
+          </div>
+          <div class="user-input-box">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Confirm Password"/>
+          </div>
+          <p class="messege" id="messege1"></p>
+
+          <button class="submit" type="submit">continue</button>
+        </div>
+      </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html> 
