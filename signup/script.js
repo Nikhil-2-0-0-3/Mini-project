@@ -1,3 +1,11 @@
+
+//import{createUserWithEmailAndPassword}from"https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js "
+//import { getAuth } from "/firebase/auth";
+
+//import firebase from "/firebase/compat/app";
+//import "/firebase/compat/auth"; 
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyD13Q2KObzuB3IM9LvKgeAaQk6TaSiJzL0",
   authDomain: "localjoli.firebaseapp.com",
@@ -8,25 +16,28 @@ const firebaseConfig = {
   appId: "1:445146514525:web:fef1706c002414c840b9b4",
 };
 
-//password confirmation
+//const auth=getAuth(app);
 
-document.getElementById("register").addEventListener("submit", (e) => {
-  var pass = document.getElementById("password").value;
-  var confirmpass = document.getElementById("confirmPassword").value;
-  const text = document.getElementById("messege1");
-  if (pass != confirmpass && pass !="" && confirmpass!="") {
-    text.textContent = "Passwords donot match";
-    text.style.color = "red";
-    e.preventDefault();
-  } else if(pass==confirmpass && pass!="" && confirmpass!=""){
-    text.textContent = "Passwords match";
-    text.style.color = "green";
+
+function passConfirm(pass,confirmpass)
+{
+  var text=document.getElementById("messege1");
+  if(pass!=confirmpass && pass!="" && confirmpass!="")
+  {
+    text.textContent="passwords donot match";
+    text.style.color="red";
+    return false;
+  }else if(pass==confirmpass && pass!="" && confirmpass!="")
+  {
+    //text.textContent = "Passwords match";
+    //text.style.color = "green";
+    return true;
   }
-});
+}
 
-//preventing null values from entering the database
 
-document.getElementById("register").addEventListener("submit", (e) => {
+function emptyFields(e)
+{
   var inputs = document.querySelectorAll("input");
   var emptyFields = [];
   inputs.forEach(function (input) {
@@ -38,13 +49,22 @@ document.getElementById("register").addEventListener("submit", (e) => {
   if (emptyFields.length > 0) {
     e.preventDefault();
     alert("Please fill in the following fields: " + emptyFields.join(", "));
+    return false;
   } 
-});
-firebase.initializeApp(firebaseConfig);
+  else return true;
+
+}
+
+
+
+const app=firebase.initializeApp(firebaseConfig);
 
 var userinfoDB = firebase.database().ref("userinfo");
 
+//event listener
+
 document.getElementById("register").addEventListener("submit", submitForm);
+
 
 function submitForm(e) {
   e.preventDefault();
@@ -58,24 +78,30 @@ function submitForm(e) {
   var Jobcategory = getElementVal("Job-category");
   var experience = getElementVal("experience");
   var password = getElementVal("password");
+  var confirmpass=getElementVal("confirmPassword");
 
-  saveMessages(
-    fullname,
-    username,
-    phone,
-    email,
-    gender,
-    dob,
-    Jobcategory,
-    experience,
-    password
-  );
-  document.getElementById("register").reset();
+  //registerUser(e);
+  var flag=emptyFields(e);
+  if(flag)
+  var flag2=passConfirm(password,confirmpass);
+  if(flag && flag2)
+  saveMessages(fullname,username,phone,email,gender, dob,Jobcategory,experience,password);
+  //document.getElementById("register").reset();
 }
 
 const getElementVal = (id) => {
   return document.getElementById(id).value;
 };
+
+//registering user with email and password
+/*
+const registerUser=e=>
+{ 
+  var email = getElementVal("email");
+  var password = getElementVal("password");
+  createUserWithEmailAndPassword(auth,email,password);   
+}*/
+
 const saveMessages = (
   fullname,
   username,
@@ -85,8 +111,7 @@ const saveMessages = (
   dob,
   Jobcategory,
   experience,
-  password
-) => {
+  password) => {
   var newuser = userinfoDB.push();
 
   newuser.set({
@@ -100,4 +125,7 @@ const saveMessages = (
     experience: experience,
     password: password,
   });
+  document.getElementById("register").reset();
+  const text=document.getElementById("messege1");
+  text.textContent="";
 };

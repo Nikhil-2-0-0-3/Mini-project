@@ -9,3 +9,11 @@ registerBtn.addEventListener('click', () => {
 loginBtn.addEventListener('click', () => {
     container.classList.remove("active");
 });
+
+const username=document.getElementById("");
+const password=document.getElementById("");
+const btn=document.getElementById("");
+btn.addEventListener("click",(e)=>
+{
+    
+})

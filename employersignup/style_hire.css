@@ -156,15 +156,16 @@ select{
     display: flex;
     margin:auto;
     margin-top: 40px;
+    margin-left:80% ;
     border-radius:10px;
     border:0;
     width: 15%;
     font-size: 20px;
     height: 30px;
     border:0;
-    margin-left: 80%;
     color: rgb(209, 209, 209);
     background: rgba(53, 207, 33, 0.774);
+
 }
 
 .submit:active{
