@@ -27,11 +27,6 @@
     display: flex;
 
 }
-.help
-{
-    color:white;
-}
-
 #help-button, #login-button {
     padding: 5px 10px;
     background-color:white;
@@ -42,7 +37,7 @@
     cursor: pointer;
     margin:30px 10px;
     border-radius: 10px;
-    transition: background-color 0.3s,color 0.3s,width .3s,height .3s;
+    transition: background-color 0.3s,color 0.3s;
 }
 
 #help-button:hover, #login-button:hover
@@ -58,7 +53,6 @@
 {
     color: white;
     margin-left:53%;
-    
 }
 
 
@@ -93,7 +87,6 @@ body{
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 20px 0;
-    
 }
 
 .user-input-box:nth-child(2n){
